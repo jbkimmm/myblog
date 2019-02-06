@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+      <div class="card h-120">
+        <a href="#"><img class="card-img-top" src="{% static 'blog/img/간절곶20190204.jpg' %}" 
+        width="700" height="300" alt=""></a>
+            <div class="card-body">
+             <h4 class="card-title">
+               <a href="#">간절곶</a>
+              </h4>
+              <p class="card-text">간절곳 전경 2019.02.04 , 
+              동해안에서 맨 먼저 떠오르는 해를 볼 수 있는 곳으로 알려져 있다. 영일만의 호미곶보다 1분 빠르게, 
+              강릉의 정동진보다도 5분 빨리 해돋이가 시작된다. 간절곶등대는 바다를 바라보고 우뚝 서 있으며 흰색이다. 
+               등대 앞은 솔 숲인데, 울창하지는 않지만 꼬불꼬불한 모양이 정겹다.
+              </p>
+            </div>
+      </div>
+      <p> </p>
+    {% for post in posts %}
+      <article class="media content-section">
+         <div class="media-body">
+          <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+          </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+        </div>
+      </article>
+
+    {% endfor %}
+{% endblock content %}
