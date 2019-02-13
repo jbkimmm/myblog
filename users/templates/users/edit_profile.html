@@ -1,0 +1,35 @@
+{% extends 'blog\base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% comment %} {% block body %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+</div>
+
+{% endblock %} {% endcomment %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">프로파일 수정</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">저장</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                이미 등록한 사용자입니까? <a class="ml-2" href="#">등록</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

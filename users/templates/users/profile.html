@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% comment %} {% block content %}
+    <div class="content-section">
+        <form method="get">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile</legend>
+                {{ form|crispy }}
+            </fieldset>
+        </form>
+    </div> {% endblock content %} {% endcomment %}
+    
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.userprofile.image.url }}" width="240">
+        <div class="media-body">
+          <p></p><p></p>
+          <h4 class="account-heading"> {{ user.username }}</h4>
+          <p></p><p></p>
+          <p>First name: &nbsp;&nbsp;&nbsp;{{ user.first_name }}</p>
+          <p class="text-secondary">Email: &nbsp;&nbsp;&nbsp;{{ user.email }}</p>
+            <p class="text-secondary">Description: &nbsp;&nbsp;&nbsp;{{ user.userprofile.description }}</p>
+            <p class="text-secondary">Phone: &nbsp;&nbsp;&nbsp;{{ user.userprofile.phone }}</p>
+            <p class="text-secondary">City: &nbsp;&nbsp;&nbsp;{{ user.userprofile.city }}</p>
+            <p class="text-secondary">Website: &nbsp;&nbsp;&nbsp;{{ user.userprofile.website }}</p>
+            {% comment %} {% if user.userprofile.image %}
+                <img src="{{ user.userprofile.image.url }}" width="240">
+            {% endif %} {% endcomment %}
+
+        </div>
+      </div>
+      <!-- FORM HERE -->
+      <div class="border-top pt-3">
+            <small class="text-muted">
+            <a class="ml-2"  href="{% url 'edit_profile' %}">프로파일 수정</a>
+            </small>
+    </div>
+    </div>
+{% endblock content %}
+
